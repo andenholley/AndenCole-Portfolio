@@ -585,58 +585,111 @@ table.data-table td:first-child, table.data-table th:first-child{ text-align:lef
 </div>
 
 <!-- ============ PROJECT PAGE: 04 CONTROLS ============ -->
+<!-- ============ PROJECT PAGE: 04 CONTROLS ============ -->
 <div class="page" id="page-sheet-04">
   <div class="wrap">
     <a class="back-link" onclick="goHome()">&larr; Back to sheet index</a>
+
     <div class="detail-titleblock">
       <div>
         <div class="sheet-num">SHEET 04 / 04</div>
         <h2>System Identification &amp; PID Control</h2>
       </div>
       <div class="detail-meta">
-        <div>CAL POLY SLO</div>
-        <div>ROLE — CONTROLS &amp; DATA ANALYSIS</div>
+        <div>ME 418 SYSTEM CONTROLS, CAL POLY SLO</div>
+        <div>MARCH 2026</div>
+        <div>ROLE — SYSTEM IDENTIFICATION · MATLAB · DATA ANALYSIS</div>
       </div>
     </div>
 
-    <div class="placeholder-note">Photos and the full report for this project haven't been added yet — send them over and I'll build out this page the same way as the wind turbine sheet.</div>
+    <div class="detail-hero-fig" onclick="openControlFigure('controls_portfolio_assets/controls-natural-responses.png','FIG 4.1 — Experimental open- and closed-loop step and impulse responses')">
+      <img src="controls_portfolio_assets/controls-natural-responses.png" alt="Experimental step and impulse responses">
+      <div class="fig-caption">FIG 4.1 — Experimental natural responses · click to enlarge</div>
+    </div>
 
     <div class="detail-grid">
-      <div class="schematic-box">
-        <svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg">
-          <g stroke="#204A63" stroke-width="2" fill="none">
-            <rect x="20" y="90" width="70" height="40"/>
-            <rect x="140" y="90" width="70" height="40"/>
-            <rect x="260" y="90" width="70" height="40"/>
-          </g>
-          <text x="55" y="114" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#204A63">REF</text>
-          <text x="175" y="114" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#204A63">PID</text>
-          <text x="295" y="114" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#204A63">PLANT</text>
-          <line x1="90" y1="110" x2="140" y2="110" stroke="#204A63" stroke-width="2" marker-end="url(#arrowC)"/>
-          <line x1="210" y1="110" x2="260" y2="110" stroke="#204A63" stroke-width="2" marker-end="url(#arrowC)"/>
-          <path d="M295 130 V180 H55 V130" fill="none" stroke="#A8672E" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#arrowD)"/>
-          <defs>
-            <marker id="arrowC" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#204A63"/></marker>
-            <marker id="arrowD" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#A8672E"/></marker>
-          </defs>
-          <text x="180" y="200" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#A8672E">MEASURED FEEDBACK</text>
-        </svg>
-        <div class="fig-caption">FIG 4.1 — Closed-loop control structure</div>
+      <div class="detail-narrative">
+        <p class="role">System identification portion of an individual controls project.</p>
+        <p>I characterized an unknown dynamic system from measured input/output data using step, impulse, and chirp excitation. Comparing the open- and closed-loop responses showed Type 1 behavior and exposed oscillatory dynamics that required a higher-order model.</p>
+        <p>I developed candidate transfer functions from each test method, then compared the simulated response directly against the experimental data. The step-response approximation preserved the Type 1 behavior but was limited to second order. The impulse fit captured fourth-order dynamics but did not preserve the pole at the origin.</p>
+        <table class="spec-table">
+          <tr><td>Inputs</td><td>Step · impulse · chirp</td></tr>
+          <tr><td>System classification</td><td>4th order · Type 1</td></tr>
+          <tr><td>Primary method</td><td>Frequency-response / Bode identification</td></tr>
+          <tr><td>Tools</td><td>MATLAB</td></tr>
+          <tr><td>Validation</td><td>Experimental vs. simulated overlays</td></tr>
+        </table>
       </div>
 
+      <div class="schematic-box">
+        <div class="label" style="margin-bottom:12px;">FINAL IDENTIFIED TRANSFER FUNCTION</div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:13px; line-height:1.8; color:var(--blueprint); overflow-x:auto;">
+          G(s) = (2.238s² + 0.2504s + 8.861)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;────────────────────────────<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(s⁴ + 0.693s³ + 5.323s² + 2.504s)
+        </div>
+        <div class="fig-caption" style="margin-top:18px;">Bode-derived model selected after damping and gain tuning</div>
+      </div>
+    </div>
+
+    <div class="gallery-section">
+      <div class="label">MODEL DEVELOPMENT — click any figure to enlarge</div>
+      <div class="gallery-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
+        <div class="gallery-thumb" onclick="openControlFigure('controls_portfolio_assets/controls-step-fit.png','FIG 4.2 — Closed-loop step response: identified model vs. experiment')">
+          <img src="controls_portfolio_assets/controls-step-fit.png" alt="Step response model fit" style="height:210px;object-fit:contain;background:#fff;">
+          <div class="cap">FIG 4.2 — Step-response model fit</div>
+        </div>
+        <div class="gallery-thumb" onclick="openControlFigure('controls_portfolio_assets/controls-impulse-fit.png','FIG 4.3 — Closed-loop impulse response: identified model vs. experiment')">
+          <img src="controls_portfolio_assets/controls-impulse-fit.png" alt="Impulse response model fit" style="height:210px;object-fit:contain;background:#fff;">
+          <div class="cap">FIG 4.3 — Impulse-response model fit</div>
+        </div>
+        <div class="gallery-thumb" onclick="openControlFigure('controls_portfolio_assets/controls-bode-fit.png','FIG 4.4 — Chirp/Bode response used for final system identification')">
+          <img src="controls_portfolio_assets/controls-bode-fit.png" alt="Bode response model fit" style="height:210px;object-fit:contain;background:#fff;">
+          <div class="cap">FIG 4.4 — Chirp / Bode model fit</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-grid">
       <div class="detail-narrative">
-        <p class="role">Individual controls project, system identification and PID design.</p>
-        <p>Given only measured input/output data from a dynamic system, the task was to work backward to a usable model. I used MATLAB system identification techniques to extract a state-space representation directly from the data, rather than deriving it from first principles.</p>
-        <p>From there I tuned a PID controller against that identified model and validated the closed-loop response against defined performance specifications — overshoot, settling time, steady-state error. It's a small project, but it's the same instinct that ran through my senior project: don't trust a model until you've checked it against something measured.</p>
-        <table class="spec-table">
-          <tr><td>Method</td><td>MATLAB system identification</td></tr>
-          <tr><td>Controller</td><td>State-space &amp; PID design</td></tr>
-          <tr><td>Validation</td><td>Closed-loop response vs. performance spec</td></tr>
-        </table>
+        <p class="role">Frequency-domain identification</p>
+        <p>The chirp response provided the most useful model because the frequency data exposed two complex-conjugate pole pairs and a pair of zeros while preserving the Type 1 system behavior. I tuned the damping around the resonant peaks and adjusted the gain to improve agreement with the measured response.</p>
+        <p>The resulting fourth-order transfer function was then tested against the original step, impulse, and chirp data. The final overlays reproduced the dominant measured dynamics, with remaining mismatch attributed to experimental noise and unmodeled dynamics in the physical setup.</p>
+      </div>
+      <div class="detail-narrative">
+        <p class="role">State-space representation</p>
+        <p>I converted the final transfer function to controllable canonical state-space form using MATLAB <code>tf2ss</code>, creating a representation suitable for later state-space analysis and controller development.</p>
+        <p style="font-size:13px;color:var(--steel);">This page currently documents the system-identification portion of the controls project. PID material can be added beneath it when the controller-design portion is available.</p>
+      </div>
+    </div>
+
+    <div class="gallery-section">
+      <div class="label">FINAL MODEL VALIDATION — click to enlarge</div>
+      <div class="gallery-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));">
+        <div class="gallery-thumb" onclick="openControlFigure('controls_portfolio_assets/controls-final-validation.png','FIG 4.5 — Final simulated transfer function overlaid with experimental step and impulse responses')">
+          <img src="controls_portfolio_assets/controls-final-validation.png" alt="Final step and impulse validation" style="height:260px;object-fit:contain;background:#fff;">
+          <div class="cap">FIG 4.5 — Final step &amp; impulse validation</div>
+        </div>
+        <div class="gallery-thumb" onclick="openControlFigure('controls_portfolio_assets/controls-bode-validation.png','FIG 4.6 — Final simulated Bode response overlaid with experimental chirp data')">
+          <img src="controls_portfolio_assets/controls-bode-validation.png" alt="Final Bode validation" style="height:260px;object-fit:contain;background:#fff;">
+          <div class="cap">FIG 4.6 — Final Bode validation</div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+function openControlFigure(src, caption){
+  const box = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-img');
+  const cap = document.getElementById('lightbox-cap');
+  img.src = src;
+  img.alt = caption || '';
+  cap.textContent = caption || '';
+  box.classList.add('open');
+}
+</script>
 
 <!-- ============ LIGHTBOX ============ -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
